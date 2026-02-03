@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una pregunta importante</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6e6;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        h1 {
+            color: #ff4d4d;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            position: relative;
+            width: 300px;
+            height: 100px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: absolute;
+        }
+        #btnSi {
+            background-color: #ff4d4d;
+            color: white;
+            left: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #btnSi:hover {
+            transform: scale(1.1);
+            background-color: #e60000;
+        }
+        #btnNo {
+            background-color: #ffffff;
+            color: #ff4d4d;
+            border: 2px solid #ff4d4d;
+            right: 20px;
+        }
+        .mensaje-final {
+            display: none;
+            margin-top: 20px;
+            color: #ff4d4d;
+            font-size: 2rem;
+            font-weight: bold;
+            animation: popIn 0.5s ease;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="contenido">
+        <h1>oli, podemos salir el 14? o bueno quieres?🌹</h1>
+        <div class="buttons">
+            <button id="btnSi" onclick="aceptar()">¡Sí, claro!</button>
+            <button id="btnNo" onmouseover="moverBoton()" onclick="moverBoton()">No</button>
+        </div>
+    </div>
+
+    <div id="mensaje" class="mensaje-final">
+        oki, me avisas puem x wasa ❤️<br>
+        <span style="font-size: 1rem; color: #333;">(me escribes)</span>
+    </div>
+
+    <script>
+        function moverBoton() {
+            const btnNo = document.getElementById('btnNo');
+            const anchoVentana = window.innerWidth;
+            const altoVentana = window.innerHeight;
+            
+            // Generar posición aleatoria
+            const nuevoX = Math.random() * (anchoVentana - 150);
+            const nuevoY = Math.random() * (altoVentana - 150);
+            
+            // Aplicar posición fija para que se mueva por toda la pantalla
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = nuevoX + 'px';
+            btnNo.style.top = nuevoY + 'px';
+        }
+
+        function aceptar() {
+            document.getElementById('contenido').style.display = 'none';
+            document.getElementById('mensaje').style.display = 'block';
+            // Opcional: Lanzar confeti aquí si quisieras agregar una librería externa
+        }
+    </script>
+</body>
+</html>
